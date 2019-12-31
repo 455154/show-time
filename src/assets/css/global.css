@@ -1,0 +1,22 @@
+body {
+  width: 1920px;
+  height: 5000px;
+}
+body,
+ul,
+input,
+li,
+h1,
+button,
+img,
+i,
+p{
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+}
+li{
+  list-style: none;
+}
