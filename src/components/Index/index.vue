@@ -54,11 +54,13 @@
       <i>HOT DOWNLOAD</i>
       <ul>
         <li v-for="(item, index) in down"
-            :key="index">
+            :key="index"
+            :class="downIndex == index ? 'color-red':''"
+            @click="downClick(index)">
           <a href="javascript:;">
-            <img :src="item.path"
+            <img :src="downIndex == index ? item.pathFff : item.path"
                  alt="">
-            <img src="/img/dian_21.jpg"
+            <img :src="downIndex == index ? '/img/witdian.png' : '/img/dian_21.jpg'"
                  alt=""
                  class="dian">
             <p>{{item.name}}</p>
@@ -200,27 +202,33 @@ export default {
         {
           path: '/img/rengong.png',
           name: '人工智能',
-          main: 'ARTIFICIAL INTELLIGENCE'
+          main: 'ARTIFICIAL INTELLIGENCE',
+          pathFff: '/img/rgzn.png'
         }, {
-          path: '/img/uisheji.png',
+          path: '/img/ui-nom.png',
           name: 'UI设计',
-          main: 'UI DESIGN'
+          main: 'UI DESIGN',
+          pathFff: '/img/uisheji.png'
         }, {
           path: '/img/qianduan.png',
           name: '前端开发',
-          main: 'FRONT-END DEVELOPMENT'
+          main: 'FRONT-END DEVELOPMENT',
+          pathFff: '/img/qdkf.png'
         }, {
           path: '/img/meiti.png',
           name: '新媒体运营',
-          main: 'NEW MEDIA OPERATIONS'
+          main: 'NEW MEDIA OPERATIONS',
+          pathFff: '/img/sjfx.png'
         }, {
           path: '/img/dianshang.png',
           name: '电商淘宝',
-          main: 'ONLINE RETAILERS'
+          main: 'ONLINE RETAILERS',
+          pathFff: '/img/dstb.png'
         }, {
           path: '/img/ruanjian.png',
           name: '软件下载',
-          main: 'SOFTWARE DOWNLOAD'
+          main: 'SOFTWARE DOWNLOAD',
+          pathFff: '/img/rjxaz.png'
         }
       ],
       teach: [
@@ -234,13 +242,18 @@ export default {
           path: '/img/t4.png'
         }
       ],
-      teachIndex: 2
+      teachIndex: 2,
+      downIndex: 1
     }
   },
   created () {
 
   },
   methods: {
+    // downClick
+    downClick (i) {
+      this.downIndex = i
+    },
     toggle (index) {
       this.teachIndex = index
     }
@@ -639,5 +652,9 @@ export default {
       width: 149px;
     }
   }
+}
+.down .color-red {
+  background-color: #da082b;
+  box-shadow: -6px -2px 5px 0px rgba(62, 0, 11, 0.35);
 }
 </style>
