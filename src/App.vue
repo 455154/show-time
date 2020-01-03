@@ -4,6 +4,8 @@
     <my-header></my-header>
     <router-view></router-view>
     <!-- footer -->
+    <my-search></my-search>
+    <my-list></my-list>
     <my-footer></my-footer>
   </div>
 </template>
