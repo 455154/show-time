@@ -110,7 +110,7 @@ export default {
           this.timeId = setInterval(() => {
             this.num--
             this.btnval = this.num
-            if (this.num === 1) {
+            if (this.num === 0) {
               clearInterval(this.timeId)
               clearTimeout(this.timeOId)
               this.num = 10
