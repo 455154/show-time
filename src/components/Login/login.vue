@@ -28,7 +28,11 @@
               <i :class="[item.icon, indinput == index ? 'aci' : '']"></i>
               <input :type="item.type" :placeholder="item.pal" />
             </div>
-            <button @click="yzm" :class="isdis ? 'btn' : ''" :disabled="isdis">
+            <button
+              @click="yzm"
+              :class="isdis === true ? 'btn' : ''"
+              :disabled="isdis"
+            >
               {{ btnval }}
             </button>
           </div>
@@ -109,6 +113,7 @@ export default {
             if (this.num === 1) {
               clearInterval(this.timeId)
               clearTimeout(this.timeOId)
+              this.num = 10
               this.isdis = false
               this.btnval = '获取验证码'
               return resolve
@@ -229,8 +234,8 @@ export default {
       letter-spacing: 0px;
       color: #ffffff;
     }
-    .btn {
-      background-color: #ccc;
+    button.btn {
+      background-color: #ccc !important;
     }
   }
   .check {
@@ -276,7 +281,8 @@ export default {
       color: #b1b1b1;
     }
   }
-  button {
+  > button {
+    outline: none;
     position: absolute;
     bottom: 44px;
     width: 472px;
