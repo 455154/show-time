@@ -207,6 +207,7 @@ h1 {
   float: left;
   width: 100%;
   display: flex;
+  background-image: linear-gradient(270deg,#d80529 0%,#ef223b 100%);
   position: relative;
   z-index: 2;
   justify-content: center;

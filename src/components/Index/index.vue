@@ -58,9 +58,9 @@
             :class="downIndex == index ? 'color-red':''"
             @click="downClick(index)">
           <a href="javascript:;">
-            <img :src="item.path"
+            <img :src="downIndex == index ? item.pathFff : item.path"
                  alt="">
-            <img src="/img/dian_21.jpg"
+            <img :src="downIndex == index ? '/img/witdian.png' : '/img/dian_21.jpg'"
                  alt=""
                  class="dian">
             <p>{{item.name}}</p>
@@ -113,12 +113,10 @@ export default {
           path: '/img/web.png',
           p: '前端开发',
           span: ['FRONT-END', 'DEVELOPMENT']
-
         }, {
           path: '/img/java.png',
           p: 'JAVA开发',
           span: ['JAVA', 'DEVELOPMENT']
-
         }
       ],
       recomList: [
@@ -161,7 +159,7 @@ export default {
           main: 'ARTIFICIAL INTELLIGENCE',
           pathFff: '/img/rgzn.png'
         }, {
-          path: '/img/uisheji.png',
+          path: '/img/ui-nom.png',
           name: 'UI设计',
           main: 'UI DESIGN',
           pathFff: '/img/uisheji.png'
@@ -203,7 +201,6 @@ export default {
     }
   },
   created () {
-
   },
   methods: {
     // downClick
@@ -226,9 +223,6 @@ export default {
   height: 11px;
   background-color: #ff0000;
   border-radius: 10px;
-}
-#con {
-  background-color: #fcfcfc;
 }
 .active {
   box-shadow: 0px 3px 9px 1px rgba(62, 0, 11, 0.35);
@@ -487,126 +481,8 @@ export default {
     }
   }
 }
-.search {
-  width: 1200px;
-  height: 148px;
-  margin: 0 auto;
-  background-color: #e7e7e7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  margin-bottom: 51px;
-  p {
-    margin-top: 20px;
-    font-family: MicrosoftYaHei;
-    font-size: 20px;
-    font-weight: normal;
-    font-stretch: normal;
-    letter-spacing: 0px;
-    color: #333333;
-    margin-bottom: 37px;
-  }
-  input {
-    width: 480px;
-    height: 40px;
-    background-color: #ffffff;
-    border-radius: 9px 0 0 9px;
-    border: solid 1px #ff0000;
-    margin-right: 112px;
-    padding-left: 42px;
-    font-family: MicrosoftYaHeiLight;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    line-height: 24px;
-    letter-spacing: 0px;
-    color: #999999;
-    outline: none;
-  }
-  button {
-    position: absolute;
-    top: 85px;
-    left: 785px;
-    width: 112px;
-    height: 42px;
-    border: solid 1px #ff0000;
-    border-radius: 0 9px 9px 0;
-    background-color: #ff0000;
-    font-family: MicrosoftYaHei;
-    font-size: 20px;
-    font-weight: normal;
-    font-stretch: normal;
-    line-height: 24px;
-    letter-spacing: 0px;
-    color: #ffffff;
-    box-sizing: border-box;
-    display: flex;
-    padding-left: 16px;
-    .iconfont {
-      margin-right: 8px;
-      width: 24px;
-      height: 24px;
-      font-size: 24px;
-      font-weight: normal;
-      font-stretch: normal;
-      line-height: 24px;
-      letter-spacing: 0px;
-      color: #ffffff;
-    }
-  }
-}
-.other {
-  width: 1200px;
-  margin: 0 auto;
-  p {
-    font-family: MicrosoftYaHeiLight;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    line-height: 24px;
-    letter-spacing: 0px;
-    color: #333333;
-    a {
-      margin-left: 38px;
-      text-decoration: underline;
-      text-decoration-color: #ff0000;
-      color: #333333;
-    }
-  }
-  div {
-    display: flex;
-    margin-bottom: 78px;
-    ul {
-      li {
-        margin-top: 31px;
-        font-family: MicrosoftYaHeiLight;
-        font-size: 14px;
-        font-weight: normal;
-        font-stretch: normal;
-        line-height: 24px;
-        letter-spacing: 0px;
-        color: #333333;
-        a {
-          color: #333333;
-        }
-      }
-    }
-    ul:nth-child(1) {
-      width: 142px;
-    }
-    ul:nth-child(2) {
-      width: 192px;
-    }
-    ul:nth-child(3) {
-      width: 165px;
-    }
-    ul:nth-child(4) {
-      width: 164px;
-    }
-    ul:nth-child(5) {
-      width: 149px;
-    }
-  }
+.down .color-red {
+  background-color: #da082b;
+  box-shadow: -6px -2px 5px 0px rgba(62, 0, 11, 0.35);
 }
 </style>
