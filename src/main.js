@@ -9,8 +9,14 @@ import './assets/font/iconfont.css'
 // header
 import myheader from './components/myCommon/header.vue'
 import myfooter from './components/myCommon/footer.vue'
+import mylist from './components/myCommon/list.vue'
+import mysearch from './components/myCommon/search.vue'
+import mypaging from './components/myCommon/paging.vue'
 Vue.component('my-header', myheader)
 Vue.component('my-footer', myfooter)
+Vue.component('my-search', mysearch)
+Vue.component('my-list', mylist)
+Vue.component('my-paging', mypaging)
 
 Vue.config.productionTip = false
 

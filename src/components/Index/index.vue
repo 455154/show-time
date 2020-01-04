@@ -54,7 +54,9 @@
       <i>HOT DOWNLOAD</i>
       <ul>
         <li v-for="(item, index) in down"
-            :key="index">
+            :key="index"
+            :class="downIndex == index ? 'color-red':''"
+            @click="downClick(index)">
           <a href="javascript:;">
             <img :src="item.path"
                  alt="">
@@ -93,50 +95,6 @@
             :class="teachIndex == index ? 'active-li':''"
             @click="toggle(index)"></li>
       </ol>
-    </div>
-    <div class="search">
-      <p>
-        没有找到想学的教程？ 尝试输入关键词
-      </p>
-      <input type="text"
-             placeholder="搜索教程或关键词">
-      <button><i class="iconfont icon-RectangleCopy"></i>搜索</button>
-    </div>
-    <div class="other">
-      <p>在线职业发展教程，智慧讲堂精选1000门职业发展视频教程供您选择，更有职业发展图文教程，素材源文件下载，学员课后练习、作品以及评价等内容。现在加入职业发展终身VIP，全站1000门
-        职业发展视频教程，无限学习；全站职业发展素材源文件，无限下载；限时超低价<a href="javascript:;">查看全部</a></p>
-      <div>
-        <ul>
-          <li>相关教程：</li>
-          <li>热门教程：</li>
-          <li>入门教程：</li>
-        </ul>
-        <ul>
-          <li><a href="javascript:;">职业生涯发展教程</a></li>
-          <li><a href="javascript:;">ppt模板教程</a></li>
-          <li><a href="javascript:;">ps2019教程</a></li>
-        </ul>
-        <ul>
-          <li><a href="javascript:;">职业设计教程</a></li>
-          <li><a href="javascript:;">石墨文档教程</a></li>
-          <li><a href="javascript:;">Illustrator教程</a></li>
-        </ul>
-        <ul>
-          <li><a href="javascript:;">职业规划教程</a></li>
-          <li><a href="javascript:;">java教程</a></li>
-          <li><a href="javascript:;">After Effects教程</a></li>
-        </ul>
-        <ul>
-          <li><a href="javascript:;">ui发展教程</a></li>
-          <li><a href="javascript:;">思维导图教程</a></li>
-          <li><a href="javascript:;">SAL教程</a></li>
-        </ul>
-        <ul>
-          <li><a href="javascript:;">传媒行业发展教程</a></li>
-          <li><a href="javascript:;">Xmind教程</a></li>
-          <li><a href="javascript:;">Sketch教程</a> </li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
@@ -200,27 +158,33 @@ export default {
         {
           path: '/img/rengong.png',
           name: '人工智能',
-          main: 'ARTIFICIAL INTELLIGENCE'
+          main: 'ARTIFICIAL INTELLIGENCE',
+          pathFff: '/img/rgzn.png'
         }, {
           path: '/img/uisheji.png',
           name: 'UI设计',
-          main: 'UI DESIGN'
+          main: 'UI DESIGN',
+          pathFff: '/img/uisheji.png'
         }, {
           path: '/img/qianduan.png',
           name: '前端开发',
-          main: 'FRONT-END DEVELOPMENT'
+          main: 'FRONT-END DEVELOPMENT',
+          pathFff: '/img/qdkf.png'
         }, {
           path: '/img/meiti.png',
           name: '新媒体运营',
-          main: 'NEW MEDIA OPERATIONS'
+          main: 'NEW MEDIA OPERATIONS',
+          pathFff: '/img/sjfx.png'
         }, {
           path: '/img/dianshang.png',
           name: '电商淘宝',
-          main: 'ONLINE RETAILERS'
+          main: 'ONLINE RETAILERS',
+          pathFff: '/img/dstb.png'
         }, {
           path: '/img/ruanjian.png',
           name: '软件下载',
-          main: 'SOFTWARE DOWNLOAD'
+          main: 'SOFTWARE DOWNLOAD',
+          pathFff: '/img/rjxaz.png'
         }
       ],
       teach: [
@@ -234,13 +198,18 @@ export default {
           path: '/img/t4.png'
         }
       ],
-      teachIndex: 2
+      teachIndex: 2,
+      downIndex: 1
     }
   },
   created () {
 
   },
   methods: {
+    // downClick
+    downClick (i) {
+      this.downIndex = i
+    },
     toggle (index) {
       this.teachIndex = index
     }

@@ -12,8 +12,7 @@
           <div>设计制作</div>
         </div>
         <ul>
-          <li class="checked"><a href="javascript:;">全部</a></li>
-          <li v-for="(item, index) in designList" :key="index"><a href="javascript:;">{{item}}</a></li>
+          <li :class="[{checked: designIndex === index}]" v-for="(item, index) in designList" :key="index"><a href="javascript:;" @click="designchecked(index)">{{item}}</a></li>
         </ul>
       </div>
       <div class="design_nav">
@@ -22,25 +21,25 @@
           <div>IT/互联网</div>
         </div>
         <ul>
-          <li class="checked"><a href="javascript:;">全部</a></li>
-          <li v-for="(item, index) in internetList" :key="index"><a href="javascript:;">{{item}}</a></li>
+          <li :class="[{checked: internetIndex === index}]" v-for="(item, index) in internetList" :key="index" @click="internetchecked(index)"><a href="javascript:;">{{item}}</a></li>
         </ul>
       </div>
     </div>
     <div class="content">
       <ul class="title">
-        <li class="checked"><h3><a href="javascript:;">VIP课程</a></h3></li>
-        <li><h3><a href="javascript:;">精选课程</a></h3></li>
+        <li :class="[{checked: courseType === 'VIP'}]" @click.stop.prevent="checkedCourseType('VIP')"><h3><a href="javascript:;">VIP课程</a></h3></li>
+        <li :class="[{checked: courseType === 'JX'}]" @click.stop.prevent="checkedCourseType('JX')"><h3><a href="javascript:;">精选课程</a></h3></li>
       </ul>
       <ul class="content_class">
         <li v-for="item in clssList" :key="item.id">
           <div>
-            <img :src="'/img/' + item.img_url">
+            <img :src="'/img/' + item.img_url" @click.stop="detailClass(item.id)">
           </div>
-          <p>{{item.title}}</p>
-          <div><span>VIP</span> 主讲人: <i>{{item.speaker}}</i></div>
+          <p @click.stop="detailClass(item.id)">{{item.title}}</p>
+          <div><span>VIP</span> 主讲人: <i @click.stop="lecturerMessage(item.speker)">{{item.speaker}}</i></div>
         </li>
       </ul>
+      <my-paging :pagesize="pageSize" :page="page" :total="total" @pagechange="pageChange($event)"></my-paging>
     </div>
   </div>
 </template>
@@ -49,8 +48,8 @@
 export default {
   data () {
     return {
-      designList: ['ui设计', '游戏动画', '电商视觉', '平面设计', '影视包装', '室内设计', '建筑设计', '工程设计', '机械设计', '手绘师'],
-      internetList: ['前端', '程序设计', '电子商务', '新媒体运营'],
+      designList: ['全部', 'ui设计', '游戏动画', '电商视觉', '平面设计', '影视包装', '室内设计', '建筑设计', '工程设计', '机械设计', '手绘师'],
+      internetList: ['全部', '前端', '程序设计', '电子商务', '新媒体运营'],
       clssList: [
         { id: 1, img_url: 'all_1.gif', title: 'UI设计基础班（直播+录...', speaker: '王一帆' },
         { id: 2, img_url: 'all_2.gif', title: '综合软件班（直播+录播）', speaker: '红雷' },
@@ -62,14 +61,37 @@ export default {
         { id: 8, img_url: 'all_8.gif', title: 'UI设计基础班（直播+录...', speaker: '王一帆' },
         { id: 9, img_url: 'all_9.gif', title: 'UI设计基础班（直播+录...', speaker: '王一帆' },
         { id: 10, img_url: 'all_10.gif', title: 'UI设计基础班（直播+录...', speaker: '王一帆' }
-      ]
+      ],
+      designIndex: 0,
+      internetIndex: 0,
+      courseType: 'VIP',
+      page: 1,
+      pageSize: 5,
+      total: 60
     }
   },
   created () {
 
   },
   methods: {
-
+    designchecked(idx) {
+      this.designIndex = idx
+    },
+    internetchecked(idx) {
+      this.internetIndex = idx
+    },
+    checkedCourseType(type) {
+      this.courseType = type
+    },
+    pageChange(e) {
+      console.log(e)
+    },
+    detailClass(id) {
+      console.log(id)
+    },
+    lecturerMessage(speker) {
+      console.log(speker)
+    }
   }
 }
 </script>
@@ -153,7 +175,6 @@ img {
 .design_nav .checked a {
     background-color: #da082b;
     color: #fff;
-    font-weight: bold;
 }
 .content {
     margin-top: 20px;
@@ -194,6 +215,9 @@ img {
     margin-top: 15px;
     flex: 20%;
 }
+.content_class img {
+  cursor: pointer;
+}
 .content_class li div {
     width: 200px;
     margin: 0 auto;
@@ -202,6 +226,10 @@ img {
     margin: 7px auto;
     width: 200px;
     color: #333;
+    cursor: pointer;
+}
+.content_class li p:active{
+    color: #da082b;
 }
 .content_class li span {
     font-size: 18px;
@@ -210,6 +238,10 @@ img {
 .content_class li i {
     margin-left: 10px;
     font-style: normal;
+    cursor: pointer;
+}
+.content_class li i:active {
+    color: #da082b;
 }
 
 </style>
