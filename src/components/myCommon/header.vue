@@ -17,7 +17,7 @@
                  placeholder="请搜索课程、用户、帖子...">
           <!-- todo icon -->
           <a href="javascript:;">
-            <i class="iconfont icon-RectangleCopy"></i>
+            <i class="iconfont icon-sousuo"></i>
           </a>
           <div class="hot">
             <span>热门搜索：</span>
@@ -28,7 +28,7 @@
             </ul>
           </div>
         </div>
-        <div class="login"><a href="javascript:;">登录</a></div>
+        <div class="login"><a href="/#/login">登录</a></div>
         <div class="regis"><a href="javascript:;">免费注册</a></div>
       </div>
     </div>
@@ -207,6 +207,7 @@ h1 {
   float: left;
   width: 100%;
   display: flex;
+  background-image: linear-gradient(270deg,#d80529 0%,#ef223b 100%);
   position: relative;
   z-index: 2;
   justify-content: center;
