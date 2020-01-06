@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Index from '../components/Index/index.vue'
 import FullCourse from '../components/FullCourse/FullCourse.vue'
 import Login from '../components/Login/login.vue'
+import GareerGuidance from '../components/gareerGuidance/gareerGuidance.vue'
 
 Vue.use(VueRouter)
 const routes = [
@@ -21,6 +22,10 @@ const routes = [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/gareerGuidance',
+    component: GareerGuidance
   }
 ]
 
