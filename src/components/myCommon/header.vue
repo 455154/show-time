@@ -51,7 +51,7 @@ export default {
     return {
       isactive: 0,
       list: ['首页', '全部课程', '公开课', '升职加薪', '就业指导', '资讯'],
-      path: ['index', 'fullCourse', 'publicClass', 'getPromoted', 'gareerGuidance', 'information']
+      path: ['/index', '/fullCourse', '/publicClass', '/getPromoted', '/gareerGuidance', '/information']
     }
   },
   created () {
