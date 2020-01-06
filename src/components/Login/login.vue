@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       list: ['手机登录', '其他方式登录'],
       ind: 0,
@@ -92,16 +92,16 @@ export default {
       imgList: ['/img/wx.png', '/img/qqq.png', '/img/wb.png']
     }
   },
-  created() {
+  created () {
     console.log('====================================')
     console.log(this.$route.path)
     console.log('====================================')
   },
   methods: {
-    toggle(i) {
+    toggle (i) {
       this.ind = i
     },
-    async yzm() {
+    async yzm () {
       this.isdis = true
       new Promise((resolve, reject) => {
         this.timeOId = setTimeout(() => {

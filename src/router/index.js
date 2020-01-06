@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../components/Index/index.vue'
+import GetPromoted from '../components/GetPromoted/getPromoted.vue'
 import FullCourse from '../components/FullCourse/FullCourse.vue'
 import Login from '../components/Login/login.vue'
 import publicClass from '../components/PublicClass/publicClass.vue'
 import Introduction from '../components/PublicClass/Introduction.vue'
 import Directory from '../components/PublicClass/Directory.vue'
 import Operation from '../components/PublicClass/Operation.vue'
+import GareerGuidance from '../components/gareerGuidance/gareerGuidance.vue'
 
 Vue.use(VueRouter)
 const routes = [
@@ -17,6 +19,10 @@ const routes = [
   {
     path: '/index',
     component: Index
+  },
+  {
+    path: '/getPromoted',
+    component: GetPromoted
   },
   {
     path: '/fullCourse',
@@ -35,11 +41,11 @@ const routes = [
       { path: 'ClassDirectory', component: Directory },
       { path: 'ClassOperation', component: Operation }
     ]
-  }
+  },
+  { path: '/gareerGuidance', component: GareerGuidance }
 ]
 
 const router = new VueRouter({
   routes
 })
-
 export default router
