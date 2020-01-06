@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../components/Index/index.vue'
 import PublicClass from '../components/publicClass/publicClass.vue'
+import GetPromoted from '../components/getPromoted/getPromoted.vue'
 
 Vue.use(VueRouter)
 const routes = [
@@ -16,6 +17,10 @@ const routes = [
   {
     path: '/publicClass',
     component: PublicClass
+  },
+  {
+    path: '/getPromoted',
+    component: GetPromoted
   }
 ]
 
