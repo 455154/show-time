@@ -34,6 +34,12 @@
         </div>
       </div>
     </div>
+    <my-paging
+      :pagesize="pageSize"
+      :page="page"
+      :total="total"
+      @pagechange="pageChange($event)"
+    ></my-paging>
   </div>
 </template>
 
@@ -128,12 +134,18 @@ export default {
           comment: 0,
           buy: 178
         }
-      ]
+      ],
+      page: 1,
+      pageSize: 5,
+      total: 60
     }
   },
   methods: {
     toggleTab (i) {
       this.isActive = i
+    },
+    pageChange(e) {
+      console.log(e)
     }
   }
 }

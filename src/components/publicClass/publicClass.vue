@@ -111,12 +111,18 @@
         </div>
       </div>
     </div>
+    <my-paging
+      :pagesize="pageSize"
+      :page="page"
+      :total="total"
+      @pagechange="pageChange($event)"
+    ></my-paging>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       isActive: 1,
       isFree: '￥',
@@ -283,13 +289,19 @@ export default {
           upComingClassTeacherHead: '阿角',
           upComingClassViews: 15650
         }
-      ]
+      ],
+      page: 1,
+      pageSize: 5,
+      total: 60
     }
   },
   components: {},
   methods: {
-    toggleActive (i) {
+    toggleActive(i) {
       this.isActive = i
+    },
+    pageChange(e) {
+      console.log(e)
     }
   }
 }
