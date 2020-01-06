@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../components/Index/index.vue'
+import PublicClass from '../components/publicClass/publicClass.vue'
 
 Vue.use(VueRouter)
 const routes = [
@@ -11,6 +12,10 @@ const routes = [
   {
     path: '/index',
     component: Index
+  },
+  {
+    path: '/publicClass',
+    component: PublicClass
   }
 ]
 
