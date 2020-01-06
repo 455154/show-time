@@ -13,8 +13,7 @@
         </div>
         <!-- search  -->
         <div class="search">
-          <input type="text"
-                 placeholder="请搜索课程、用户、帖子...">
+          <input type="text" placeholder="请搜索课程、用户、帖子..." />
           <!-- todo icon -->
           <a href="javascript:;">
             <i class="iconfont icon-sousuo"></i>
@@ -33,12 +32,21 @@
       </div>
     </div>
     <!-- title  -->
-    <div class="title">
+    <div
+      :class="[
+        'title',
+        $route.matched[0].path === '/ClassCon' ? 'toggletit' : ''
+      ]"
+    >
       <ul class="list">
-        <li v-for="(item, index) in list"
-            :key="index"><a @click="setActive(index)"
-             href="javascript:;">{{item}}</a>
-          <div :class="isactive==index?'active':''"></div>
+        <li v-for="(item, index) in list" :key="index">
+          <a
+            @click="setActive(index)"
+            href="javascript:;"
+            :class="$route.matched[0].path === '/ClassCon' ? 'toggleaa' : ''"
+            >{{ item }}</a
+          >
+          <div :class="isactive == index ? 'active' : ''"></div>
         </li>
       </ul>
     </div>
@@ -47,18 +55,23 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       isactive: 0,
       list: ['首页', '全部课程', '公开课', '升职加薪', '就业指导', '资讯'],
-      path: ['/index', '/fullCourse', '/publicClass', '/getPromoted', '/gareerGuidance', '/information']
+      path: [
+        '/index',
+        '/fullCourse',
+        '/publicClass',
+        '/getPromoted',
+        '/gareerGuidance',
+        '/information'
+      ]
     }
   },
-  created () {
-
-  },
+  created() {},
   methods: {
-    setActive (index) {
+    setActive(index) {
       this.isactive = index
       this.$router.push(this.path[this.isactive])
     }
@@ -203,11 +216,12 @@ h1 {
 .active {
   border-bottom: 2px solid #fff;
 }
+
 .title {
   float: left;
   width: 100%;
   display: flex;
-  background-image: linear-gradient(270deg,#d80529 0%,#ef223b 100%);
+  background-image: linear-gradient(270deg, #d80529 0%, #ef223b 100%);
   position: relative;
   z-index: 2;
   justify-content: center;
@@ -229,6 +243,9 @@ h1 {
         letter-spacing: 0px;
         color: #fff;
       }
+      .toggleaa {
+        color: #e24b52;
+      }
       div {
         width: 50%;
         margin: 0 auto;
@@ -236,5 +253,8 @@ h1 {
       }
     }
   }
+}
+.toggletit {
+  background-image: linear-gradient(270deg, #fff 0%, #fff 100%);
 }
 </style>

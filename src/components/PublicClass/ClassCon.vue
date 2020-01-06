@@ -61,7 +61,7 @@
             <div class="bottom-r-top">
               <div class="bottom-r-t-time">
                 <span>距离直播开始还有：</span>
-                <p>倒计时</p>
+                <p>{{ downTime }}</p>
               </div>
               <div class="bottom-r-t-mony">
                 <span>售价：¥ <i>2999</i></span>
@@ -73,7 +73,7 @@
                   <i></i>
                   <div class="yhq-r">
                     <p>领劵倒计时</p>
-                    <span>129时48分15秒</span>
+                    <span>{{ downTimeH }}</span>
                     <a href="javascript:;">
                       <button>点我领劵</button>
                     </a>
@@ -139,6 +139,10 @@
         </div>
       </div>
     </div>
+    <div v-if="scrollTop" class="fix">
+      <span></span>
+      <p>TOP</p>
+    </div>
   </div>
 </template>
 
@@ -146,6 +150,9 @@
 export default {
   data() {
     return {
+      scrollTop: false,
+      downTime: '',
+      downTimeH: '',
       classList: [
         {
           con: '01:课程试听'
@@ -168,14 +175,21 @@ export default {
       ],
       classInx: 0,
       toggleList: [
-        { path: '/publicClass/ClassIntroduction', con: '课程介绍' },
-        { path: '/publicClass/ClassDirectory', con: '课程目录' },
-        { path: '/publicClass/ClassOperation', con: '课程作业' }
+        { path: '/ClassCon/ClassIntroduction', con: '课程介绍' },
+        { path: '/ClassCon/ClassDirectory', con: '课程目录' },
+        { path: '/ClassCon/ClassOperation', con: '课程作业' }
       ],
       toggleInx: 0
     }
   },
-  created() {},
+  created() {
+    console.log(this.$route)
+    this.routeInx()
+    this.TimeDown(this.downTime, 'Mon Jan 17 2020 23:16:54 GMT+0800')
+  },
+  mounted() {
+    window.addEventListener('scroll', this.scrollToTop)
+  },
   watch: {
     classInx(newval, old) {
       console.log(newval, old)
@@ -185,9 +199,66 @@ export default {
       this.classList[newval].con = this.classList[newval].con
         .split('：')
         .join(':')
+    },
+    $route(newval, old) {
+      console.log(newval)
+      console.log(old)
+    }
+  },
+  computed: {
+    scrollWin() {
+      console.log(document.body.scrollTop)
+      return document.body.scrollTop
     }
   },
   methods: {
+    // 滚动事件
+    scrollToTop() {
+      let scrollToTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop
+      let scrollToLeft = window.pageXOffset
+      console.log(scrollToLeft)
+      console.log(scrollToTop)
+      if (scrollToTop > 1400 && scrollToLeft > 300) this.scrollTop = true
+      if (scrollToTop < 1400 || scrollToLeft < 300) this.scrollTop = false
+    },
+    // 判断当前con
+    routeInx() {
+      if (this.$route.path === this.toggleList[0].path) this.toggleInx = 0
+      if (this.$route.path === this.toggleList[1].path) this.toggleInx = 1
+      if (this.$route.path === this.toggleList[2].path) this.toggleInx = 2
+    },
+    TimeDown(id, endDateStr) {
+      // 结束时间
+      let endDate = new Date(endDateStr)
+      // 当前时间
+      let nowDate = new Date()
+      // 相差的总秒数
+      let totalSeconds = parseInt((endDate - nowDate) / 1000)
+      // 天数
+      let days = Math.floor(totalSeconds / (60 * 60 * 24))
+      // 取模（余数）
+      let modulo = totalSeconds % (60 * 60 * 24)
+      // 小时数
+      let hours = Math.floor(modulo / (60 * 60))
+      modulo = modulo % (60 * 60)
+      // 分钟
+      let minutes = Math.floor(modulo / 60)
+      // 秒
+      let seconds = modulo % 60
+      // 总小时
+      let allH = hours + days * 24
+      // 输出
+      this.downTime =
+        days + '天' + hours + '时' + minutes + '分' + seconds + '秒'
+      this.downTimeH = allH + '时' + minutes + '分' + seconds + '秒'
+      // 延迟一秒执行自己
+      setTimeout(() => {
+        this.TimeDown(id, endDateStr)
+      }, 1000)
+    },
     activeCla(i) {
       this.classInx = i
       console.log('====================================')
@@ -197,6 +268,7 @@ export default {
     toggle(i, path) {
       this.toggleInx = i
       this.$router.push(path)
+      console.log(path)
     }
   }
 }
@@ -638,7 +710,7 @@ export default {
         border-bottom: 2px solid rgba(236, 33, 46, 0.2);
       }
     }
-    .cla-l-b{
+    .cla-l-b {
       background-color: #fff;
     }
   }
@@ -721,6 +793,36 @@ export default {
       letter-spacing: 0px;
       color: rgba(51, 51, 51, 1);
     }
+  }
+}
+.fix {
+  width: 50px;
+  height: 64px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    width: 35px;
+    height: 35px;
+    transform: rotate(-135deg);
+    border-bottom: 1px solid rgba(153, 153, 153, 1);
+    border-right: 1px solid rgba(153, 153, 153, 1);
+  }
+  p {
+    width: 48px;
+    height: 20px;
+    font-family: MicrosoftYaHei;
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: rgba(153, 153, 153, 1);
   }
 }
 </style>

@@ -5,7 +5,7 @@
         没有找到想学的教程？ 尝试输入关键词
       </p>
       <input type="text" placeholder="搜索教程或关键词" />
-      <button><i class="iconfont icon-RectangleCopy"></i>搜索</button>
+      <button><i class="iconfont icon-sousuo"></i>搜索</button>
     </div>
   </div>
 </template>

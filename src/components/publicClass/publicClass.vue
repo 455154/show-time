@@ -20,7 +20,7 @@
           v-for="(item, index) in todyClassList"
           :key="index"
         >
-          <a href="javascript:;">
+          <a href="javascript:;" @click="$router.push('/ClassCon/ClassIntroduction')">
             <img class="todyClassImg" :src="item.path" alt="" />
             <div class="todyClassname">{{ item.h3 }}</div>
             <p>{{ item.p }}</p>

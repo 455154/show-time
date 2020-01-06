@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../components/Index/index.vue'
-import GetPromoted from '../components/GetPromoted/getPromoted.vue'
+import GetPromoted from '../components/getPromoted/getPromoted.vue'
 import FullCourse from '../components/FullCourse/FullCourse.vue'
 import Login from '../components/Login/login.vue'
 import publicClass from '../components/PublicClass/publicClass.vue'
+import ClassCon from '../components/PublicClass/ClassCon.vue'
 import Introduction from '../components/PublicClass/Introduction.vue'
 import Directory from '../components/PublicClass/Directory.vue'
 import Operation from '../components/PublicClass/Operation.vue'
@@ -32,10 +33,11 @@ const routes = [
     path: '/login',
     component: Login
   },
+  { path: '/publicClass', component: publicClass },
   {
-    path: '/publicClass',
-    redirect: 'publicClass/ClassIntroduction',
-    component: publicClass,
+    path: '/ClassCon',
+    redirect: 'ClassCon/ClassIntroduction',
+    component: ClassCon,
     children: [
       { path: 'ClassIntroduction', component: Introduction },
       { path: 'ClassDirectory', component: Directory },
