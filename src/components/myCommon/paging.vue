@@ -149,7 +149,7 @@ div.page ul li {
   cursor: pointer;
 }
 div.page ul li.active {
-  background: #1796e0;
+  background: #ec212e;
   color: #fff;
 }
 div.page ul li.disable {

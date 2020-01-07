@@ -6,6 +6,8 @@ import store from './store'
 import './assets/css/global.css'
 // 字体库
 import './assets/font/iconfont.css'
+// ui组件库
+import './plugins/element.js'
 // header
 import myheader from './components/myCommon/header.vue'
 import myfooter from './components/myCommon/footer.vue'
