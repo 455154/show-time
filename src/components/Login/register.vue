@@ -43,7 +43,7 @@
           <div v-if="ind == 1">
             <ul class="other">
               <li v-for="(item, index) in imgList" :key="index">
-                <a href="javascript:;"><img :src="item" alt="" /></a>
+                <img :src="item" alt="" />
               </li>
             </ul>
             <div class="loginkuaisu">
@@ -61,9 +61,9 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      list: ['手机登录', '其他方式登录'],
+      list: ['手机注册', '其他方式登录'],
       ind: 0,
       inputList: [
         {
@@ -74,22 +74,54 @@ export default {
         {
           type: 'password',
           icon: 'iconfont icon-icon_anquan',
-          pal: '请输入密码'
+          pal: '请设置6～18位密码'
+        },
+        {
+          type: 'text',
+          icon: 'iconfont icon-zfmm',
+          pal: '请输入验证码'
         }
       ],
       indinput: -1,
+      isdis: false,
+      btnval: '获取验证码',
+      num: 10,
+      timeID: '',
+      timeOId: '',
       span: '登录即表示您同意并遵守 <用户协议>',
       imgList: ['/img/wx.png', '/img/qqq.png', '/img/wb.png']
     }
   },
-  created () {
+  created() {
     console.log('====================================')
     console.log(this.$route.path)
     console.log('====================================')
   },
   methods: {
-    toggle (i) {
+    toggle(i) {
       this.ind = i
+    },
+    async yzm() {
+      this.isdis = true
+      new Promise((resolve, reject) => {
+        this.timeOId = setTimeout(() => {
+          this.btnval = this.num
+          console.log(1)
+          this.timeId = setInterval(() => {
+            this.num--
+            this.btnval = this.num
+            if (this.num === 0) {
+              clearInterval(this.timeId)
+              clearTimeout(this.timeOId)
+              this.num = 10
+              this.isdis = false
+              this.btnval = '获取验证码'
+              return resolve
+            }
+            console.log(this.num)
+          }, 1000)
+        }, 0)
+      }).then(() => {})
     }
   }
 }
@@ -122,7 +154,7 @@ export default {
     top: 251px;
     left: 1110px;
     width: 569px;
-    height: 530px;
+    height: 642px;
     background-color: #ffffff;
     box-shadow: 0px 0px 27px 0px rgba(0, 0, 0, 0.11);
     border-radius: 22px;
@@ -184,6 +216,26 @@ export default {
     }
     .aci {
       color: #f41b40;
+    }
+    button {
+      position: absolute;
+      bottom: 11px;
+      right: 0;
+      width: 118px;
+      height: 45px;
+      background-color: #ff3e5e;
+      border-radius: 2px;
+      border: none;
+      outline: none;
+      font-family: SourceHanSansCN-Regular;
+      font-size: 18px;
+      font-weight: normal;
+      font-stretch: normal;
+      letter-spacing: 0px;
+      color: #ffffff;
+    }
+    button.btn {
+      background-color: #ccc !important;
     }
   }
   .check {
@@ -255,7 +307,6 @@ export default {
   .loginkuaisu {
     display: flex;
     align-items: center;
-    margin-top: -50px;
     i {
       width: 180px;
       height: 1px;

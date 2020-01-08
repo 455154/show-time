@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="login"><a href="/#/login">登录</a></div>
-        <div class="regis"><a href="javascript:;">免费注册</a></div>
+        <div class="regis"><a href="/#/register">免费注册</a></div>
       </div>
     </div>
     <!-- title  -->
